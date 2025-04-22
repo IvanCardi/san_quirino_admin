@@ -1,16 +1,8 @@
-import { Office } from "@/lib/models/office";
-import { officeColumns } from "./office-columns";
 import { CustomTable } from "@/components/custom-table";
 import { Button } from "@/components/ui/button";
+import { getOffices } from "@/lib/http/getOffices";
 import Link from "next/link";
-
-const getOffices = async (): Promise<Office[]> => {
-  const cars = await fetch(`${process.env.BE_BASE_URL}/offices`, {
-    next: { tags: ["offices"] },
-  });
-
-  return (await cars.json()) as Office[];
-};
+import { officeColumns } from "./office-columns";
 
 export default async function Home() {
   const offices = await getOffices();
