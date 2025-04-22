@@ -48,18 +48,13 @@ export const officeColumns: ColumnDef<Office>[] = [
   },
   {
     accessorKey: "manager",
-    accessorFn: (row) =>
-      row.manager && {
-        id: row.manager.id,
-        name: row.manager.name,
-      },
     header: "Responsabile",
     cell: ({ row }) => {
       const manager = row.getValue("manager") as
         | undefined
         | { id: string; name: string };
 
-      return manager ? <p>{manager.name}</p> : <></>;
+      return manager?.name ? <p>{manager.name}</p> : <p></p>;
     },
   },
 ];

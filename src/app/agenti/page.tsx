@@ -8,7 +8,7 @@ const getAgents = async (): Promise<Agent[]> => {
   return (await cars.json()) as Agent[];
 };
 
-export default async function Home() {
+export default async function Agenti() {
   const agents = await getAgents();
 
   return (
