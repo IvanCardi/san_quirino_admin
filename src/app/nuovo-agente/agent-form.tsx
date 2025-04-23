@@ -75,6 +75,8 @@ export function OfficeForm({ offices }: { offices: Office[] }) {
     },
   });
 
+  const selectedType = form.watch("type");
+
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     const result = await createAgent(values);
 
@@ -161,6 +163,7 @@ export function OfficeForm({ offices }: { offices: Office[] }) {
                     <Select
                       onValueChange={field.onChange}
                       defaultValue={field.value}
+                      disabled={!selectedType}
                     >
                       <FormControl style={{ width: "100%" }}>
                         <SelectTrigger className="w-full">
@@ -168,11 +171,19 @@ export function OfficeForm({ offices }: { offices: Office[] }) {
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
-                        {offices.map((o) => (
-                          <SelectItem key={o.id} value={o.id}>
-                            {o.name}
-                          </SelectItem>
-                        ))}
+                        {offices
+                          .filter((o) => {
+                            if (selectedType === "manager") {
+                              return !o.manager;
+                            }
+
+                            return true;
+                          })
+                          .map((o) => (
+                            <SelectItem key={o.id} value={o.id}>
+                              {o.name}
+                            </SelectItem>
+                          ))}
                       </SelectContent>
                     </Select>
                     <FormMessage />
