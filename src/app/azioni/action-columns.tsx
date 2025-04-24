@@ -4,6 +4,7 @@ import { Action } from "@/lib/models/action";
 import { ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown } from "lucide-react";
 import moment from "moment";
+import PointsPopover from "./points-popover";
 
 export const actionColumns: ColumnDef<Action>[] = [
   {
@@ -67,6 +68,17 @@ export const actionColumns: ColumnDef<Action>[] = [
   {
     accessorKey: "points",
     header: "Punteggio",
+    cell: ({ row }) => {
+      const id = row.original.id;
+      const points = row.getValue("points") as number;
+
+      return (
+        <div className="flex gap-2 items-center">
+          <p>{points}</p>
+          <PointsPopover actionId={id} initialValue={points} />
+        </div>
+      );
+    },
   },
   {
     accessorKey: "createdAt",
