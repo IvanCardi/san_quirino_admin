@@ -1,4 +1,4 @@
-import { Building, Newspaper, User } from "lucide-react";
+import { Building, Newspaper, Swords, User } from "lucide-react";
 
 import {
   Sidebar,
@@ -27,6 +27,11 @@ const items = [
     title: "Azioni",
     url: "/azioni",
     icon: Newspaper,
+  },
+  {
+    title: "Sfide",
+    url: "/sfide",
+    icon: Swords,
   },
 ];
 
