@@ -30,7 +30,7 @@ function ChallengeItem({ challenge }: { challenge: Challenge }) {
         <Challenger challenger={challenge.opponent} />
       </div>
       <div className="flex items-center">
-        <div className="w-[50%] border border-r-0 h-6 border-black">
+        <div className="w-[50%] border-2 rounded-l-lg overflow-hidden border-r-0 h-6 border-gray-600">
           <div
             className="h-full bg-blue-400"
             style={{
@@ -40,8 +40,8 @@ function ChallengeItem({ challenge }: { challenge: Challenge }) {
             }}
           ></div>
         </div>
-        <div className="h-12 w-[2px] bg-black"></div>
-        <div className="w-[50%] border border-l-0 h-6 border-black flex justify-end">
+        <div className="h-9 max-w-[3px] min-w-[3px] bg-gray-600"></div>
+        <div className="w-[50%] border-2 border-l-0 rounded-r-lg overflow-hidden h-6 border-gray-600 flex justify-end">
           <div
             className="h-full bg-blue-400"
             style={{
