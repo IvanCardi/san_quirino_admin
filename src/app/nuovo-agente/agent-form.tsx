@@ -26,6 +26,7 @@ import {
   SelectContent,
   SelectItem,
 } from "@/components/ui/select";
+import { agentTypes } from "@/lib/models/agentTypes";
 
 const formSchema = z
   .object({
@@ -53,12 +54,6 @@ const formSchema = z
     message: "La password non corrispondono",
     path: ["confirmPassword"], // This highlights the confirmPassword field in errors
   });
-
-const agentTypes = [
-  { label: "Notiziere", value: "news_hunter" },
-  { label: "Coach", value: "coach" },
-  { label: "Responsabile", value: "manager" },
-];
 
 export function OfficeForm({ offices }: { offices: Office[] }) {
   const router = useRouter();

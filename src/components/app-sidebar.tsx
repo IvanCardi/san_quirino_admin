@@ -1,4 +1,5 @@
-import { Building, Newspaper, Swords, User } from "lucide-react";
+"use client";
+import { Building, Megaphone, Newspaper, Swords, User } from "lucide-react";
 
 import {
   Sidebar,
@@ -6,9 +7,11 @@ import {
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
+  SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  SidebarTrigger,
 } from "@/components/ui/sidebar";
 import Link from "next/link";
 
@@ -33,14 +36,22 @@ const items = [
     url: "/sfide",
     icon: Swords,
   },
+  {
+    title: "Invia Notifica",
+    url: "/invia-notifica",
+    icon: Megaphone,
+  },
 ];
 
 export function AppSidebar() {
   return (
-    <Sidebar>
+    <Sidebar collapsible="icon" variant="floating">
+      <SidebarHeader className="w-full flex flex-row justify-end">
+        <SidebarTrigger className="cursor-pointer" />
+      </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Admin Panel</SidebarGroupLabel>
+          <SidebarGroupLabel>San Quirino Admin</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (
