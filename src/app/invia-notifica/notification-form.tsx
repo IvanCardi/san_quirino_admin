@@ -134,6 +134,7 @@ export default function NotificationForm({
         description: result.message,
       });
     } else {
+      form.reset();
       toast("Notifica inviata con successo!");
     }
   };
@@ -163,7 +164,7 @@ export default function NotificationForm({
                         form.setValue("userType", "");
                         field.onChange(value);
                       }}
-                      defaultValue={field.value}
+                      value={field.value}
                     >
                       <FormControl>
                         <SelectTrigger>
