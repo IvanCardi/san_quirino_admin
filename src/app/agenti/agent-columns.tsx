@@ -75,7 +75,7 @@ export const agentColumns: ColumnDef<Agent>[] = [
     cell: ({ row }) => {
       const office = row.getValue("office") as { id: string; name: string };
 
-      return <p>{office.name}</p>;
+      return <p>{office?.name}</p>;
     },
   },
 ];

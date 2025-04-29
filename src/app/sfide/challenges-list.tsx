@@ -88,10 +88,12 @@ function Challenger({ challenger }: { challenger: Challenge["challenger"] }) {
       <h1 className="text-lg font-bold">
         {challenger.firstName} {challenger.lastName}
       </h1>
-      <div className="flex items-center gap-1">
-        <Building size={14} color="#777" />
-        <p className="text-sm text-[#555]">{challenger.office.name}</p>
-      </div>
+      {challenger.office && (
+        <div className="flex items-center gap-1">
+          <Building size={14} color="#777" />
+          <p className="text-sm text-[#555]">{challenger.office.name}</p>
+        </div>
+      )}
       <p className="font-black text-xl">{challenger.points}</p>
     </div>
   );

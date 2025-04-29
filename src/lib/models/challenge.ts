@@ -12,7 +12,7 @@ type Challenger = {
   lastName: string;
   avatar: string;
   points: number;
-  office: {
+  office?: {
     id: string;
     name: string;
   };
