@@ -5,5 +5,5 @@ export type Action = {
   fullAddress: string;
   phone: string;
   type: string;
-  agent: { id: string; name: string };
+  agent?: { id: string; name: string };
 };

@@ -83,9 +83,11 @@ export const actionColumns: ColumnDef<Action>[] = [
     accessorKey: "agent",
     header: "Agente",
     cell: ({ row }) => {
-      const agent = row.getValue("agent") as { id: string; name: string };
+      const agent = row.getValue("agent") as
+        | { id: string; name: string }
+        | undefined;
 
-      return <p>{agent.name}</p>;
+      return <p>{agent?.name}</p>;
     },
   },
   {
