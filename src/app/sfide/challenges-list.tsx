@@ -1,6 +1,10 @@
+"use client";
+import { Button } from "@/components/ui/button";
 import { Challenge } from "@/lib/models/challenge";
-import { Building, ClockFading, Swords, Trophy } from "lucide-react";
+import { Building, ClockFading, Swords, Trash, Trophy } from "lucide-react";
 import Image from "next/image";
+import { deleteChallenge } from "./actions";
+import { toast } from "sonner";
 
 export function ChallengesList({ challenges }: { challenges: Challenge[] }) {
   return (
@@ -13,8 +17,25 @@ export function ChallengesList({ challenges }: { challenges: Challenge[] }) {
 }
 
 function ChallengeItem({ challenge }: { challenge: Challenge }) {
+  const onDelete = async () => {
+    const result = await deleteChallenge(challenge.id);
+
+    if (result.status === "error") {
+      toast("Si è verificato un errore", {
+        description: result.message,
+      });
+    }
+  };
+
   return (
-    <div className="p-10 rounded-lg flex flex-col gap-5 shadow-lg w-fit">
+    <div className="p-10 rounded-lg flex flex-col gap-5 shadow-lg w-fit relative">
+      <Button
+        variant="ghost"
+        className="absolute top-2 cursor-pointer right-2"
+        onClick={onDelete}
+      >
+        <Trash />
+      </Button>
       <div className="flex gap-10 items-center">
         <Challenger challenger={challenge.challenger} />
         <div className="flex flex-col items-center">
