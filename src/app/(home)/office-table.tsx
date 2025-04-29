@@ -7,6 +7,7 @@ import { ColumnDef } from "@tanstack/react-table";
 import Link from "next/link";
 import { toast } from "sonner";
 import { deleteOffices } from "./actions";
+import { Input } from "@/components/ui/input";
 
 export default function OfficeTable({
   columns,
@@ -26,10 +27,29 @@ export default function OfficeTable({
   };
   return (
     <CustomTable data={offices} columns={columns}>
-      {({ table }) => {
+      {({ table, columnFilters, setColumnFilters }) => {
         return (
           <div className="flex justify-between">
-            <div className=""></div>
+            <div className="flex gap-2">
+              <Input
+                placeholder="Ricerca per nome..."
+                value={
+                  (table.getColumn("name")?.getFilterValue() as string) ?? ""
+                }
+                onChange={(event) =>
+                  table.getColumn("name")?.setFilterValue(event.target.value)
+                }
+              />
+              {columnFilters.length > 0 && (
+                <Button
+                  onClick={() => {
+                    setColumnFilters([]);
+                  }}
+                >
+                  Reset
+                </Button>
+              )}
+            </div>
             <div className="flex gap-2">
               <Button
                 className="cursor-pointer"

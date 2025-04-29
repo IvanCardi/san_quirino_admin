@@ -31,31 +31,10 @@ export const actionColumns: ColumnDef<Action>[] = [
     enableHiding: false,
   },
   {
-    accessorKey: "name",
-    accessorFn: (row) => `${row.firstName} ${row.lastName}`,
-    header: "Nome",
-    /*  header: ({ column }) => {
-      return (
-        <div className="flex gap-1 items-center">
-          <p>Nome</p>
-          <Button
-            variant="ghost"
-            size={"sm"}
-            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-          >
-            <ArrowUpDown />
-          </Button>
-        </div>
-      );
-    }, */
-  },
-  {
-    accessorKey: "fullAddress",
-    header: "Indirizzo",
-  },
-  {
-    accessorKey: "phone",
-    header: "Telefono",
+    accessorKey: "contact",
+    accessorFn: (row) =>
+      `${row.firstName} ${row.lastName}, ${row.fullAddress}, ${row.phone}`,
+    header: "Contatto",
   },
   {
     accessorKey: "type",
@@ -81,14 +60,8 @@ export const actionColumns: ColumnDef<Action>[] = [
 
   {
     accessorKey: "agent",
+    accessorFn: (row) => row.agent?.name,
     header: "Agente",
-    cell: ({ row }) => {
-      const agent = row.getValue("agent") as
-        | { id: string; name: string }
-        | undefined;
-
-      return <p>{agent?.name}</p>;
-    },
   },
   {
     accessorKey: "points",
@@ -121,10 +94,86 @@ export const actionColumns: ColumnDef<Action>[] = [
         </div>
       );
     },
-    cell: ({ row }) => {
-      const createdAt = row.getValue("createdAt") as string;
-
-      return <p>{moment(createdAt).format("DD/MM/YYYY")}</p>;
+    accessorFn: (row) => moment(row.createdAt).format("DD/MM/YYYY"),
+  },
+  {
+    accessorKey: "appointmentDate",
+    header: ({ column }) => {
+      return (
+        <div className="flex gap-1 items-center">
+          <p>Data appuntamento</p>
+          <Button
+            variant="ghost"
+            size={"sm"}
+            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          >
+            <ArrowUpDown />
+          </Button>
+        </div>
+      );
     },
+    accessorFn: (row) =>
+      row.appointmentDate
+        ? moment(row.appointmentDate).format("DD/MM/YYYY")
+        : "",
+  },
+  {
+    accessorKey: "assignmentDate",
+    header: ({ column }) => {
+      return (
+        <div className="flex gap-1 items-center">
+          <p>Data Inizio Incarico</p>
+          <Button
+            variant="ghost"
+            size={"sm"}
+            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          >
+            <ArrowUpDown />
+          </Button>
+        </div>
+      );
+    },
+    accessorFn: (row) =>
+      row.assignmentDate ? moment(row.assignmentDate).format("DD/MM/YYYY") : "",
+  },
+  {
+    accessorKey: "endAssignmentDate",
+    header: ({ column }) => {
+      return (
+        <div className="flex gap-1 items-center">
+          <p>Data Fine Incarico</p>
+          <Button
+            variant="ghost"
+            size={"sm"}
+            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          >
+            <ArrowUpDown />
+          </Button>
+        </div>
+      );
+    },
+    accessorFn: (row) =>
+      row.endAssignmentDate
+        ? moment(row.endAssignmentDate).format("DD/MM/YYYY")
+        : "",
+  },
+  {
+    accessorKey: "saleDate",
+    header: ({ column }) => {
+      return (
+        <div className="flex gap-1 items-center">
+          <p>Data Vendita</p>
+          <Button
+            variant="ghost"
+            size={"sm"}
+            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          >
+            <ArrowUpDown />
+          </Button>
+        </div>
+      );
+    },
+    accessorFn: (row) =>
+      row.saleDate ? moment(row.saleDate).format("DD/MM/YYYY") : "",
   },
 ];
