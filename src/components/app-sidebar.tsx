@@ -18,7 +18,7 @@ import Link from "next/link";
 const items = [
   {
     title: "Uffici",
-    url: "/",
+    url: "/uffici",
     icon: Building,
   },
   {

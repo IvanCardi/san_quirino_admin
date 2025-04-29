@@ -71,7 +71,7 @@ export const agentColumns: ColumnDef<Agent>[] = [
   },
   {
     accessorKey: "office",
-    accessorFn: (row) => `${row.office?.name}`,
+    accessorFn: (row) => `${row.office?.name ?? ""}`,
     header: "Ufficio",
     cell: ({ row }) => {
       const office = row.getValue("office") as string | undefined;

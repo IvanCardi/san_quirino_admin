@@ -4,6 +4,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Office } from "@/lib/models/office";
 import { ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown } from "lucide-react";
+import Link from "next/link";
 
 export const officeColumns: ColumnDef<Office>[] = [
   {
@@ -42,6 +43,16 @@ export const officeColumns: ColumnDef<Office>[] = [
             <ArrowUpDown />
           </Button>
         </div>
+      );
+    },
+    cell: ({ row }) => {
+      const name = row.getValue("name") as string;
+      const id = row.original.id;
+
+      return (
+        <Link href={`uffici/${id}`} className="hover:underline">
+          {name}
+        </Link>
       );
     },
   },
