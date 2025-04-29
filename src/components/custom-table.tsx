@@ -8,6 +8,7 @@ import {
   getPaginationRowModel,
   getSortedRowModel,
   SortingState,
+  Table as TableType,
   useReactTable,
 } from "@tanstack/react-table";
 
@@ -19,20 +20,28 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { useState } from "react";
+import { Dispatch, ReactNode, SetStateAction, useState } from "react";
 import { Button } from "./ui/button";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
+  children?: (options: {
+    columnFilters: ColumnFiltersState;
+    setColumnFilters: Dispatch<SetStateAction<ColumnFiltersState>>;
+    rowSelection: object;
+    table: TableType<TData>;
+  }) => ReactNode;
 }
 
 export function CustomTable<TData, TValue>({
   columns,
   data,
+  children,
 }: DataTableProps<TData, TValue>) {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
+  const [rowSelection, setRowSelection] = useState({});
 
   const table = useReactTable({
     data,
@@ -43,14 +52,18 @@ export function CustomTable<TData, TValue>({
     getSortedRowModel: getSortedRowModel(),
     onColumnFiltersChange: setColumnFilters,
     getFilteredRowModel: getFilteredRowModel(),
+    onRowSelectionChange: setRowSelection,
     state: {
       sorting,
       columnFilters,
+      rowSelection,
     },
   });
 
   return (
     <div className="flex flex-col gap-4">
+      {children &&
+        children({ columnFilters, setColumnFilters, rowSelection, table })}
       <div className="rounded-md border">
         <Table>
           <TableHeader>

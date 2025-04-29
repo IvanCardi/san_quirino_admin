@@ -10,7 +10,7 @@ const nextConfig: NextConfig = {
     ];
   },
   images: {
-    remotePatterns: [new URL("http://localhost:3000/**")],
+    remotePatterns: [new URL("http://192.168.1.102:3000/**")],
   },
 };
 
