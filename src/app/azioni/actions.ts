@@ -32,6 +32,38 @@ export async function updatePoints(
   }
 }
 
+export async function updateAction(
+  id: string,
+  props: {
+    firstName: string;
+    lastName: string;
+    fullAddress: string;
+    phone: string;
+  }
+): Promise<ServerActionResponse> {
+  try {
+    const response = await fetch(`${process.env.BE_BASE_URL}/actions/${id}`, {
+      method: "PATCH",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(props),
+    });
+
+    if (response.status !== 200) {
+      return { status: "error", message: "" };
+    }
+
+    revalidateTag("actions");
+
+    return { status: "ok" };
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  } catch (error: unknown) {
+    return { status: "error", message: "" };
+  }
+}
+
 export async function deleteActions(
   actionsIds: string[]
 ): Promise<ServerActionResponse> {

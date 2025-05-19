@@ -6,6 +6,7 @@ import { ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown } from "lucide-react";
 import moment from "moment";
 import PointsPopover from "./points-popover";
+import ContactPopover from "./contact-popover";
 
 export const actionColumns: ColumnDef<Action>[] = [
   {
@@ -35,6 +36,16 @@ export const actionColumns: ColumnDef<Action>[] = [
     accessorFn: (row) =>
       `${row.firstName} ${row.lastName}, ${row.fullAddress}, ${row.phone}`,
     header: "Contatto",
+    cell: ({ row }) => {
+      const contact = row.getValue("contact") as string;
+
+      return (
+        <div className="flex gap-2 items-center">
+          <p>{contact}</p>
+          <ContactPopover action={row.original} />
+        </div>
+      );
+    },
   },
   {
     accessorKey: "type",
