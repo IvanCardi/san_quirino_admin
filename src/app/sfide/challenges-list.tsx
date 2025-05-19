@@ -55,9 +55,10 @@ function ChallengeItem({ challenge }: { challenge: Challenge }) {
           <div
             className="h-full bg-blue-400"
             style={{
-              width: `${
-                (challenge.challenger.points / challenge.target) * 100
-              }%`,
+              width: `${Math.min(
+                (challenge.challenger.points / challenge.target) * 100,
+                100
+              )}%`,
             }}
           ></div>
         </div>
@@ -66,7 +67,10 @@ function ChallengeItem({ challenge }: { challenge: Challenge }) {
           <div
             className="h-full bg-blue-400"
             style={{
-              width: `${(challenge.opponent.points / challenge.target) * 100}%`,
+              width: `${Math.min(
+                (challenge.opponent.points / challenge.target) * 100,
+                100
+              )}%`,
             }}
           ></div>
         </div>
