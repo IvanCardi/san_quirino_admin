@@ -54,7 +54,7 @@ export default function ActionTable({
                   <SelectValue placeholder="Filtro" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="contact">Contato</SelectItem>
+                  <SelectItem value="contact">Contatto</SelectItem>
                   <SelectItem value="type">Tipo</SelectItem>
                   <SelectItem value="agent">Agente</SelectItem>
                 </SelectContent>

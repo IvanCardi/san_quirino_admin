@@ -5,4 +5,5 @@ export type Agent = {
   lastName: string;
   userId: string;
   office?: { id: string; name: string };
+  type: string;
 };

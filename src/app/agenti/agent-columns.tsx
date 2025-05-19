@@ -4,6 +4,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Agent } from "@/lib/models/agent";
 import { ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown } from "lucide-react";
+import Link from "next/link";
 
 export const agentColumns: ColumnDef<Agent>[] = [
   {
@@ -43,6 +44,16 @@ export const agentColumns: ColumnDef<Agent>[] = [
             <ArrowUpDown />
           </Button>
         </div>
+      );
+    },
+    cell: ({ row }) => {
+      const name = row.getValue("name") as string;
+      const id = row.original.id;
+
+      return (
+        <Link href={`agenti/${id}`} className="hover:underline">
+          {name}
+        </Link>
       );
     },
   },
