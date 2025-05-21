@@ -8,7 +8,7 @@ export async function updatePoints(
 ): Promise<ServerActionResponse> {
   try {
     const response = await fetch(
-      `${process.env.BE_BASE_URL}/actions/${actionId}/points`,
+      `${process.env.NEXT_PUBLIC_BE_BASE_URL}/actions/${actionId}/points`,
       {
         method: "PATCH",
         headers: {
@@ -42,7 +42,7 @@ export async function updateAction(
   }
 ): Promise<ServerActionResponse> {
   try {
-    const response = await fetch(`${process.env.BE_BASE_URL}/actions/${id}`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BE_BASE_URL}/actions/${id}`, {
       method: "PATCH",
       headers: {
         Accept: "application/json",
@@ -69,7 +69,7 @@ export async function deleteActions(
 ): Promise<ServerActionResponse> {
   try {
     const result = await fetch(
-      `${process.env.BE_BASE_URL}/actions?${actionsIds
+      `${process.env.NEXT_PUBLIC_BE_BASE_URL}/actions?${actionsIds
         .map((id) => `actionsIds=${id}`)
         .join("&")}`,
       {

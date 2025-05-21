@@ -7,7 +7,7 @@ export async function deleteAgents(
 ): Promise<ServerActionResponse> {
   try {
     const result = await fetch(
-      `${process.env.BE_BASE_URL}/agents?${agentsIds
+      `${process.env.NEXT_PUBLIC_BE_BASE_URL}/agents?${agentsIds
         .map((id) => `agentsIds=${id}`)
         .join("&")}`,
       {

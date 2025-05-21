@@ -15,7 +15,7 @@ export async function updateOffice(
   }
 ): Promise<ServerActionResponse> {
   try {
-    const result = await fetch(`${process.env.BE_BASE_URL}/offices/${id}`, {
+    const result = await fetch(`${process.env.NEXT_PUBLIC_BE_BASE_URL}/offices/${id}`, {
       method: "PATCH",
       headers: {
         Accept: "application/json",

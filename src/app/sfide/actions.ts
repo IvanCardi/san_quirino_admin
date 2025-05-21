@@ -7,7 +7,7 @@ export async function deleteChallenge(
 ): Promise<ServerActionResponse> {
   try {
     const result = await fetch(
-      `${process.env.BE_BASE_URL}/challenges?challengesIds=${challengeId}`,
+      `${process.env.NEXT_PUBLIC_BE_BASE_URL}/challenges?challengesIds=${challengeId}`,
       {
         method: "DELETE",
         headers: {

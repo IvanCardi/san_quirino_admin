@@ -12,7 +12,7 @@ export async function createOffice(data: {
   zipCode: string;
 }): Promise<ServerActionResponse> {
   try {
-    const result = await fetch(`${process.env.BE_BASE_URL}/offices`, {
+    const result = await fetch(`${process.env.NEXT_PUBLIC_BE_BASE_URL}/offices`, {
       method: "POST",
       headers: {
         Accept: "application/json",

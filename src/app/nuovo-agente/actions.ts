@@ -11,7 +11,7 @@ export async function createAgent(data: {
   officeId: string;
 }): Promise<ServerActionResponse> {
   try {
-    const result = await fetch(`${process.env.BE_BASE_URL}/register`, {
+    const result = await fetch(`${process.env.NEXT_PUBLIC_BE_BASE_URL}/register`, {
       method: "POST",
       headers: {
         Accept: "application/json",

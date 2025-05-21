@@ -7,7 +7,7 @@ export async function deleteOffices(
 ): Promise<ServerActionResponse> {
   try {
     const result = await fetch(
-      `${process.env.BE_BASE_URL}/offices?${officesIds
+      `${process.env.NEXT_PUBLIC_BE_BASE_URL}/offices?${officesIds
         .map((id) => `officesIds=${id}`)
         .join("&")}`,
       {

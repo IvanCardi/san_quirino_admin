@@ -10,7 +10,7 @@ export async function uploadImages(
       formData.append("images", image);
     }
 
-    const imagesResponse = await fetch(`${process.env.BE_BASE_URL}/images`, {
+    const imagesResponse = await fetch(`${process.env.NEXT_PUBLIC_BE_BASE_URL}/images`, {
       method: "POST",
       body: formData,
     });
