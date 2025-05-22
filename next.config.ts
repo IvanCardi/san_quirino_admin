@@ -10,16 +10,20 @@ const nextConfig: NextConfig = {
       },
     ];
   },
-  async rewrites() {
-    return [
-      {
-        source: "/uploads/:path*",
-        destination: "https://be-app-production-6ce5.up.railway.app/:path*",
-      },
-    ];
-  },
   images: {
-    remotePatterns: [new URL("https://be-app-production-6ce5.up.railway.app/**")],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "be-app-production-6ce5.up.railway.app",
+        pathname: "/**",
+      },
+      {
+        protocol: "http",
+        hostname: "localhost",
+        port: "3000",
+        pathname: "/**",
+      },
+    ],
   },
 };
 
