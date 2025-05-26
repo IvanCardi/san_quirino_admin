@@ -30,7 +30,7 @@ export default function OfficeTable({
       {({ table, columnFilters, setColumnFilters }) => {
         return (
           <div className="flex justify-between">
-            <div className="flex gap-2">
+            <div className="flex gap-2 items-center">
               <Input
                 placeholder="Ricerca per nome..."
                 value={
@@ -49,6 +49,7 @@ export default function OfficeTable({
                   Reset
                 </Button>
               )}
+              <p className="min-w-fit font-bold text-[12px]">Totale uffici: {offices.length}</p>
             </div>
             <div className="flex gap-2">
               <Button

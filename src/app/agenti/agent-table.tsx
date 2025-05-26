@@ -43,7 +43,7 @@ export default function AgentTable({
       {({ table, setColumnFilters, columnFilters }) => {
         return (
           <div className="flex justify-between">
-            <div className="flex gap-2">
+            <div className="flex gap-2 items-center">
               <Select
                 value={filterType}
                 onValueChange={(value) => {
@@ -115,6 +115,7 @@ export default function AgentTable({
                   Reset
                 </Button>
               )}
+              <p className="min-w-fit font-bold text-[12px]">Totale agenti: {agents.length}</p>
             </div>
             <div className="flex gap-2">
               <Button
