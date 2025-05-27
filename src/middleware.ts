@@ -5,7 +5,6 @@ import { NextResponse } from "next/server";
 export async function middleware(req: NextRequest) {
   const accessToken = req.cookies.get("access_token")?.value;
 
-  console.log(accessToken);
   if (!accessToken) {
     if (req.nextUrl.pathname === "/login") {
       return NextResponse.next();
